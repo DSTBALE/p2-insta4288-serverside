@@ -1,26 +1,26 @@
-# This is a sample .gitignore file that's useful for EECS 485 projects.
+# This is a sample .gitignore file that's useful for CS 4288 projects.
 #
 # Add this file to the root of your git repo.  Name it .gitignore
 #
 # A .gitignore file will tell git which files and directories to ignore and
 # not add to version control.
 
-# EECS 485 All Projects
+# CS 4288 All Projects
 submit.tar.gz
 submit.tar.xz
 starter_files.tar.gz
 starter_files.tar.xz
 
-# EECS 485 Project 1
+# CS 4288 Project 1
 /insta485_html/
 /generated_html/
 
-# EECS 485 Project 2
+# CS 4288 Project 2
 *.pem
 *.db
 var/
 
-# EECS 485 Project 3
+# CS 4288 Project 3
 node_modules/
 cookies.txt
 session.json
@@ -31,11 +31,11 @@ bundle.js
 **/cypress/videos
 **/cypress/screenshots
 
-# EECS 485 Project 4
+# CS 4288 Project 4
 tmp
 output
 
-# EECS 485 Project 5
+# CS 4288 Project 5
 output*
 total_document_count.txt
 **/inverted_index/crawl/
