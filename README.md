@@ -36,10 +36,10 @@ The key, database, uploads, virtual environment, and AWS PEM file are ignored by
 - `./bin/insta4288db destroy`: delete the working database and working uploads.
 - `./bin/insta4288db reset`: delete and recreate the working database and uploads.
 
-The tutorial database currently has a two-column `users` table with four sample
-users. The project implementation must expand it to the full five-table schema
-and seed data described in the P2 specification. The provided full-project tests
-are preserved and are not expected to pass at this tutorial stage.
+The database contains the full P2 five-table schema and official seed data, with
+required fields, length limits, generated timestamps, and cascading deletes.
+Run `env/bin/pytest -q tests/db_tests` to verify it. The Flask app remains the
+tutorial user list; full application tests require implementing the P2 features.
 
 ## AWS
 
