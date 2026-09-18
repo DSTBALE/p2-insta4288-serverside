@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Insta4288 Flask Tutorial</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Users</h1>
+  {% for user in users %}
+  <p>{{ user.username }} {{ user.fullname }}</p>
+  {% endfor %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+#!/bin/bash
+# Manage the tutorial database and working upload directory.
+set -Eeuo pipefail
+cd "$(dirname "$0")/.."
+usage() { echo "Usage: $0 (create|destroy|reset|dump)"; }
+create() {
+    if [ -e var/insta4288.sqlite3 ]; then
+        echo "Error: database already exists" >&2
+        exit 1
+    fi
+    mkdir -p var/uploads
+    if [ ! -f var/secret_key ]; then
+        (umask 077; head -c 32 /dev/urandom > var/secret_key)
+    fi
+    sqlite3 -bail var/insta4288.sqlite3 < sql/schema.sql
+    sqlite3 -bail var/insta4288.sqlite3 < sql/data.sql
+    cp sql/uploads/* var/uploads/
+}
+destroy() {
+    rm -f var/insta4288.sqlite3
+    rm -rf var/uploads
+}
+if [ "$#" -ne 1 ]; then
+    usage
+    exit 1
+fi
+case "$1" in
+    create) create ;;
+    destroy) destroy ;;
+    reset) destroy; create ;;
+    dump)
+        if [ ! -f var/insta4288.sqlite3 ]; then
+            echo "Error: database does not exist" >&2
+            exit 1
+        fi
+        sqlite3 var/insta4288.sqlite3 .dump
+        ;;
+    *) usage; exit 1 ;;
+esac

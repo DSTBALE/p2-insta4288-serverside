@@ -1,0 +1,10 @@
+#!/bin/bash
+# Start the local tutorial development server.
+set -Eeuo pipefail
+cd "$(dirname "$0")/.."
+if [ ! -f var/insta4288.sqlite3 ]; then
+    echo "Error: can't find database var/insta4288.sqlite3" >&2
+    echo "Try: ./bin/insta4288db create" >&2
+    exit 1
+fi
+exec env/bin/flask --app insta4288 --debug run --host 0.0.0.0 --port 8000
